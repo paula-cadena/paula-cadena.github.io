@@ -1,0 +1,127 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
+/* Style the header */
+.header {
+    background-color: #002E2C;
+    font-family: "Montserrat", sans-serif;
+    padding: 5px;
+    font-weight: 900;
+    text-align: center;
+    font-size: 20px;
+    color: #eaebed;
+}
+
+span {
+    font-weight: 443;
+    font-style: italic;
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+    float: right;
+    width: 35%;
+    height: 660px;
+    background: #DDFFF7;
+    padding: 20px;
+}
+
+/* Style the list inside the menu */
+
+.link1 {
+    display: block;
+    background-color: #035E7B;
+    color: #FFF9FB;
+    text-decoration: double;
+    align-items: center;
+    padding: 10%;
+    margin-bottom: 25%;
+    margin-top: 25%;
+}
+
+article {
+    float: left;
+    padding: 35px;
+    width: 65%;
+    background-color: #FBF7F4;
+    height: 660px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 2;
+}
+
+/* Clear floats after the columns */
+section::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Style the footer */
+.footer {
+    background-color: #218380;
+    padding: 10px;
+    text-align: center;
+    color: #eaebed;
+}
+
+.country{
+    float: left;
+    padding: 35pxpx;
+    width: 100%;
+    background-color: #FBF7F4;
+    height: 525px;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #F0F7EE;
+}
+
+.region{
+    float: left;
+    padding: 1px;
+    width: 100%;
+    background-color: #FBF7F4;
+    height: 525px;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #F0F7EE;
+}
+
+.description{
+    background-color: #035E7B;
+    font-family: "Montserrat", sans-serif;
+    padding: 1px;
+    font-weight: 300;
+    text-align: center;
+    font-size: 20px;
+    color: #eaebed;
+}
+
+.btn {
+    background-color: #218380;
+    border: none;
+    color: #F0F7EE;
+    padding: 10px 10px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  /* Darker background on mouse-over */
+  .btn:hover {
+    background-color: #134d4b;
+  }
+
+/* Responsive layout */
+@media (max-width: 600px) {
+
+    nav,
+    article {
+        width: 100%;
+        height: auto;
+    }
+}
