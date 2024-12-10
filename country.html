@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="theme.css">
+    <title>Country</title>
+    <link rel="icon" href="UChicago.png"type="image/x-icon" />
+</head>
+
+<body>
+    <header class="header">
+        <h1>Migration in Motion<span> A Visual Exploration of Global Trends</span></h1>
+    </header>
+    <div class="description">
+        <p>
+            This page features an interactive map showcasing migration flows 
+            to and from individual countries, using cumulative data in five-year 
+            intervals starting from 1990. Explore: 
+            <b>Connections</b> to visualize the origin and destination flows, with the 
+            selected country as the focal point and <b>Top Origins</b> to display the 
+            top 5 countries of origin for migrants to the selected country.
+        </p>
+        <p>Select a year and hover over a country on the map to update the 
+            visuals dynamically and dive deeper into migration insights.</p>
+    </div>
+    <div class="country">
+        <iframe src="plots_country.html" height = "500" width = "1500" style = "border:none"></iframe>
+    </div>
+    <footer class="footer">
+        <button class="btn" onclick="window.open('index.html');">
+            <i class="fa fa-home"></i>
+          </button>
+        <p>Paula Cadena | CAPP 30239: Data Visualization for Policy Analysis | University of Chicago</p>
+    </footer>
+</body>
+
+</html>
