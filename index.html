@@ -1,51 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="theme.css">
-    <title>Home</title>
-    <link rel="icon" href="UChicago.png"type="image/x-icon" />
+    <title>Paula Cadena - Portfolio</title>
+    <link rel="stylesheet" href="theme_new.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-
 <body>
-    <header class="header">
-        <h1>Migration in Motion<span> A Visual Exploration of Global Trends</span></h1>
-    </header>
-    <section>
+    <header>
         <nav>
-            <a class=link1 href="country.html">Country</a>
-            <a class=link1 href="region.html">Region</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cv.html">CV</a></li>
+            </ul>
         </nav>
+        <div class="header-content">
+            <h1>Paula Cadena, MS</h1>
+            <h2>Data Scientist Driving Social Impact Through Advanced Analytics</h2>
+        </div>
+    </header>
 
-        <article>
-            <p>This interactive visualization project provides a comprehensive 
-                look at global migration trends using data from the UN 
-                International Migrant Stock and UN Population Projections. It 
-                explores migration patterns, demographic details, and regional 
-                trends across decades, offering a unique lens into how migration 
-                shapes societies worldwide.</p>
-            <p>You can navigate to:
-                <b>Country</b>, and examine migration flows for specific 
-                countries, with interactive maps and charts displaying 
-                origin-destination connections and demographic breakdowns.
-                or <b>Region</b>, and discover regional trends through net 
-                migration rates and subregional dynamics.</p>
-            <p>Data Sources:</p>
-            <a href="https://www.un.org/development/desa/pd/content/international-migrant-stock"> United Nations, Population Division (2020) - International Migrant Stock</a> and
-            <a href="https://population.un.org/wpp/Download/Standard/MostUsed/"> United Nations, Department of Economic and Social Affairs, Population Division (2024) - World Population Prospects</a>
-        </article>
-    </section>
+    <main class="container">
+        <section class="projects">
+            <h3>Feautered Projects</h3>
+            <div class="project-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <h4>Migration in Motion</h4>
+                    <p>Comprehensive look at global migration trends</p>
+                    <div class="project-links">
+                        <a href="project_dataviz.html" class="btn"><i class="fa-regular fa-chart-column"></i> Visualization</a>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <h4>Ghost-Hunter</h4>
+                    <p>Looking for Ghosts in Medicaid Provider Directories</p>
+                    <div class="project-links">
+                        <a href="https://github.com/uchicago-mscapp-projects/Ghost-Hunter" class="btn"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <h4>Costa Rica Proxy Means Test</h4>
+                    <p>Machine Learning supervised Proxy Means Test (PMT) to classify poverty status</p>
+                    <div class="project-links">
+                        <a href="#" class="btn"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    <footer class="footer">
-        <p>Paula Cadena | CAPP 30239: Data Visualization for Policy Analysis | University of Chicago</p>
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/paula-cadena/"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/paula-cadena"><i class="fab fa-github"></i></a>
+        </div>
+        <p>&copy; 2025 Paula Cadena. All rights reserved.</p>
     </footer>
 </body>
-
 </html>

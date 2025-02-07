@@ -1,0 +1,347 @@
+:root {
+    --primary-color: #2d3436;
+    --secondary-color: #0984e3;
+    --accent-color: #00b894;
+    --text-color: #2d3436;
+    --background-color: #ffffff;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --nav-spacing: 1.5rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2rem 0 4rem 0;
+}
+
+nav {
+    padding: 0 2rem;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--nav-spacing);
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+.header-content {
+    text-align: center;
+    padding: 0 2rem;
+}
+
+.header-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Projects Page Styles */
+.projects h3 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.project-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-card h4 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* Contact Section Styles */
+.contact h3 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    background-color: var(--secondary-color);
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--accent-color);
+}
+
+.btn.github { background-color: #333; }
+.btn.linkedin { background-color: #0A66C2; }
+
+/* CV Page Styles */
+.cv-section h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 0.5rem;
+}
+
+.timeline {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 3rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background: var(--secondary-color);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+    padding-left: 2rem;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 5px;
+    width: 14px;
+    height: 14px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+}
+
+.date {
+    display: block;
+    color: #666;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.responsibilities {
+    padding-left: 1.5rem;
+}
+
+.responsibilities li {
+    margin-bottom: 0.5rem;
+}
+
+.skill-tags {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.skill-tag {
+    background: var(--secondary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.education-item {
+    background: white;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 4rem;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--accent-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .nav-links {
+        justify-content: center;
+    }
+
+    .timeline::before {
+        left: 4px;
+    }
+
+    .timeline-item {
+        padding-left: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+
+    .project-card {
+        padding: 1rem;
+    }
+
+    .skill-tags {
+        gap: 0.5rem;
+    }
+
+    .skill-tag {
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+.contact-info {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.contact-info a {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.contact-info a:hover {
+    opacity: 0.8;
+}
+
+.honors {
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.skill-category {
+    background: rgba(0, 184, 148, 0.1);
+    padding: 1.2rem;
+    border-radius: 8px;
+}
+
+.skill-category h4 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.responsibilities li {
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .contact-info {
+        font-size: 0.8rem;
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}
