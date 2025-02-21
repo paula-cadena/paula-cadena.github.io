@@ -356,3 +356,53 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+.repositories {
+    text-align: center;
+    margin: 3rem auto;
+    padding: 2rem;
+    background: var(--background-color);
+    box-shadow: var(--card-shadow);
+    border-radius: 10px;
+    max-width: 80%;
+}
+
+.repositories h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.repositories p {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+.repo-list {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.repo-list li {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-left: 4px solid var(--secondary-color);
+    background: #f9f9f9;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+    transition: background 0.3s ease-in-out;
+}
+
+.repo-list li:hover {
+    background: #eef7ff;
+}
+
+.repo-list i {
+    color: var(--secondary-color);
+}
