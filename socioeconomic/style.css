@@ -1,0 +1,119 @@
+:root {
+    --primary-purple: #742183;
+    --primary-green: #166417;
+    --secondary-purple: #f8c7cc;
+    --secondary-green: #81a684;
+    --background-gray: #f5f5f5;
+    --text-dark: #333333;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+}
+
+h1, h2, h3 {
+    font-family: Helvetica, Arial, sans-serif;
+    color: var(--text-dark);
+    border-bottom: 2px solid var(--primary-green);
+    padding-bottom: 0.3em;
+}
+
+.section-title {
+    color: var(--primary-purple);
+    margin-top: 2rem;
+}
+
+.viz-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+    padding: 1rem;
+    background-color: var(--background-gray);
+    border-radius: 8px;
+}
+
+.viz-card {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.viz-card img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+}
+
+.context-text {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background-color: #fff9f9;
+    border-left: 4px solid var(--primary-purple);
+}
+
+.grid-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.caption {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+/* Lightbox Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    overflow: auto;
+}
+
+.modal-content {
+    margin: 2% auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90vh;
+    animation: zoom 0.3s;
+}
+
+@keyframes zoom {
+    from {transform: scale(0.9)}
+    to {transform: scale(1)}
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover {
+    color: #bbb;
+    cursor: pointer;
+}
+
+.modal-caption {
+    color: white;
+    text-align: center;
+    margin-top: 1rem;
+}
