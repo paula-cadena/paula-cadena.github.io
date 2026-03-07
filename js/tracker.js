@@ -4,6 +4,7 @@
 
 const ENDPOINT = "https://script.google.com/macros/s/AKfycbw6uBOIEtTLJWQDkOVKvx0O7TDPWtzBhLOIk-dS5gj_99wLISQvm0aHyDn9JSEmOMJgoQ/exec";
 
+
 // ------------------------------------------------------------
 // Session state 
 // ------------------------------------------------------------
@@ -50,10 +51,12 @@ function send(event, extra) {
 
   const body = JSON.stringify(payload);
 
+  // sendBeacon skips CORS preflight — required for Google Apps Script
+  // Falls back to no-cors fetch which also avoids preflight
   if (navigator.sendBeacon) {
     navigator.sendBeacon(ENDPOINT, new Blob([body], { type: "application/json" }));
   } else {
-    fetch(ENDPOINT, { method: "POST", body: body, keepalive: true }).catch(function() {});
+    fetch(ENDPOINT, { method: "POST", mode: "no-cors", body: body }).catch(function() {});
   }
 }
 
