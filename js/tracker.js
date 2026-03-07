@@ -54,7 +54,7 @@ function send(event, extra) {
   // sendBeacon skips CORS preflight — required for Google Apps Script
   // Falls back to no-cors fetch which also avoids preflight
   if (navigator.sendBeacon) {
-    navigator.sendBeacon(ENDPOINT, new Blob([body], { type: "application/json" }));
+    navigator.sendBeacon(ENDPOINT, new Blob([body], { type: "text/plain" }));
   } else {
     fetch(ENDPOINT, { method: "POST", mode: "no-cors", body: body }).catch(function() {});
   }
