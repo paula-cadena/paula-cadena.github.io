@@ -1,3 +1,14 @@
-# MacOS cruft
+# ============================================================
+# .gitignore — add this to the root of your portfolio repo
+# ============================================================
+
+# Tracker config — contains secret Apps Script URL
+js/config.js
+
+# OS clutter
 .DS_Store
-.DS_Store/
+Thumbs.db
+
+# Editor folders
+.vscode/
+.idea/
