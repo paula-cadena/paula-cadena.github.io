@@ -6,9 +6,9 @@
 // (just before the closing </body> tag, after main.js)
 // ============================================================
 
-const ENDPOINT = (typeof CONFIG !== "undefined" && CONFIG.TRACKING_ENDPOINT)
-  ? CONFIG.TRACKING_ENDPOINT
-  : null;
+const CONFIG = {
+  TRACKING_ENDPOINT: "https://script.google.com/macros/s/AKfycbw6uBOIEtTLJWQDkOVKvx0O7TDPWtzBhLOIk-dS5gj_99wLISQvm0aHyDn9JSEmOMJgoQ/exec",
+};
 
 // ------------------------------------------------------------
 // Session state
