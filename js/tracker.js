@@ -6,8 +6,7 @@
 // (just before the closing </body> tag, after main.js)
 // ============================================================
 
-const ENDPOINT = "https://script.google.com/macros/s/AKfycbw6uBOIEtTLJWQDkOVKvx0O7TDPWtzBhLOIk-dS5gj_99wLISQvm0aHyDn9JSEmOMJgoQ/exec"
-
+const ENDPOINT = "https://script.google.com/macros/s/AKfycbw6uBOIEtTLJWQDkOVKvx0O7TDPWtzBhLOIk-dS5gj_99wLISQvm0aHyDn9JSEmOMJgoQ/exec";
 
 // ------------------------------------------------------------
 // Session state 
