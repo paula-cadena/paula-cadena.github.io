@@ -1,0 +1,98 @@
+/* ============================================================
+   TYPOGRAPHY & SHARED LAYOUT
+   ============================================================ */
+
+/* --- Section shell --- */
+section { padding: 100px 5vw; }
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1.2rem;
+  margin-bottom: 3.5rem;
+}
+.section-num {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+}
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  color: var(--ink);
+}
+.section-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  max-width: 300px;
+}
+
+/* --- Buttons --- */
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  padding: 0.75rem 1.75rem;
+  border-radius: 3px;
+  text-decoration: none;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: #a83820; transform: translateY(-1px); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+  padding: 0.75rem 1.75rem;
+  border: 1.5px solid var(--border);
+  border-radius: 3px;
+  text-decoration: none;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+/* --- Tags / chips / pills --- */
+.chip {
+  background: var(--bg2);
+  color: var(--ink2);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 2px;
+  letter-spacing: 0.05em;
+}
+.tag {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--ink3);
+  background: var(--bg2);
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+}
+.skill-pill {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--ink2);
+  background: var(--bg2);
+  padding: 0.3rem 0.65rem;
+  border-radius: 2px;
+}
+
+/* --- Scroll reveal --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s, transform 0.6s;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

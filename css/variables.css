@@ -1,0 +1,36 @@
+/* ============================================================
+   VARIABLES & BASE RESET
+   ============================================================ */
+
+:root {
+  --bg:      #f7f5f0;
+  --bg2:     #eeeae2;
+  --ink:     #1a1714;
+  --ink2:    #4a4540;
+  --ink3:    #8a8278;
+  --accent:  #c84b2f;
+  --accent2: #e8a87c;
+  --card:    #ffffff;
+  --border:  #ddd9d0;
+
+  --mono:  'DM Mono', monospace;
+  --serif: 'DM Serif Display', serif;
+  --sans:  'DM Sans', sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}

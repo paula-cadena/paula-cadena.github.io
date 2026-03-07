@@ -1,0 +1,56 @@
+/* ============================================================
+   EXPERIENCE
+   ============================================================ */
+
+#experience { background: var(--bg); }
+
+.exp-list {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+}
+.exp-item {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 2rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.exp-item:first-child { padding-top: 0; }
+
+.exp-meta { display: flex; flex-direction: column; gap: 0.3rem; }
+.exp-date {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--ink3);
+  letter-spacing: 0.05em;
+}
+.exp-org {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--accent);
+}
+.exp-role {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+.exp-bullets li {
+  font-size: 0.88rem;
+  color: var(--ink2);
+  padding-left: 1rem;
+  position: relative;
+  line-height: 1.6;
+}
+.exp-bullets li::before {
+  content: '—';
+  position: absolute; left: 0;
+  color: var(--accent);
+  font-size: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+}
