@@ -1,94 +1,498 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paula Cadena - Portfolio</title>
-    <link rel="stylesheet" href="theme_new.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paula Cadena — Data Scientist</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/projects.css">
+  <link rel="stylesheet" href="css/experience.css">
+  <link rel="stylesheet" href="css/sections.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="cv.html">CV</a></li>
-            </ul>
-        </nav>
-        <div class="header-content">
-            <h1>Paula Cadena, MS</h1>
-            <h2>Data Scientist Driving Social Impact Through Advanced Analytics</h2>
-        </div>
-    </header>
 
-    <main class="container">
-        <section class="projects">
-            <h3>Featured Projects</h3>
-            <div class="project-grid">
-                <!-- Project 1 -->
-                <div class="project-card">
-                    <h4>Migration in Motion</h4>
-                    <p>Comprehensive look at Global Migration Trends</p>
-                    <div class="project-links">
-                        <a href="migration/project_dataviz.html" class="btn"><i class="fas fa-chart-column"></i> Visualization</a>
-                        <a href="https://github.com/paula-cadena/CAPP30239-IP" class="btn"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
-                </div>
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <h4>Costa Rica Proxy Means Test</h4>
-                    <p>Using Machine Supervised Learning Proxy Means Test (PMT) to classify poverty status</p>
-                    <div class="project-links">
-                        <a href="https://github.com/m-rosenbaum/cr_pmt/" class="btn"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
-                </div>
-                <!-- Project 3 -->
-                <div class="project-card">
-                    <h4>Unveiling Global Trends</h4>
-                    <p> Examines Socioeconomic Patterns Across Nations</p>
-                    <div class="project-links">
-                        <a href="socioeconomic/patterns.html" class="btn"><i class="fas fa-chart-column"></i> Visualization</a>
-                        <a href="https://github.com/paula-cadena/CAPP30239-SP" class="btn"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
-                </div>
-                <!-- Project 4 -->
-                <div class="project-card">
-                    <h4>Ghost-Hunter</h4>
-                    <p>Looking for Ghosts in Medicaid Provider Directories</p>
-                    <div class="project-links">
-                        <a href="https://github.com/uchicago-mscapp-projects/Ghost-Hunter" class="btn"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
-                </div>
-                <!-- Project 5 -->
-                <div class="project-card">
-                    <h4>miau: A Slack Dupe</h4>
-                    <p>Real-time messaging platform built with Flask (Python) backend and React frontend</p>
-                    <div class="project-links">
-                        <a href="https://github.com/paula-cadena/slack-dupe" class="btn"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-    <section class="repositories">
-        <h3>Additional Repositories Available Upon Request</h3>
-        <p>Many repositories for school projects are private to uphold academic integrity policies. Code for any of the classes listed below is available upon request.</p>
-        <ul class="repo-list">
-            <li><i class="fas fa-code"></i> CAPP 30121: Computer Science with Applications I (Python)</li>
-            <li><i class="fas fa-code"></i> CAPP 30122: Computer Science with Applications II (Python)</li>
-            <li><i class="fas fa-database"></i> CAPP 30235: Databases for Public Policy (Python, SQL)</li>
-            <li><i class="fas fa-robot"></i> CAPP 30254: Machine Learning for Public Policy (Python: scikit-learn, PyTorch)</li>
-            <li><i class="fas fa-chart-line"></i> CAPP 30239: Data Visualization (Python, JavaScript, HTML & CSS)</li>
-            <li><i class="fas fa-cloud"></i> MPCS 51083: Cloud Computing (Python, AWS, SQL)</li>
-            <li><i class="fas fa-globe"></i> MPCS 52553: Web Development (HTML, Python, JavaScript, CSS, React, SQL)</li>
-        </ul>
-    </section>       
-    <footer>
-        <div class="social-icons">
-            <a href="https://www.linkedin.com/in/paula-cadena/"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/paula-cadena"><i class="fab fa-github"></i></a>
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav>
+  <a class="nav-logo" href="#">pc.ds</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section id="hero">
+  <div class="hero-grid">
+
+    <div>
+      <p class="hero-eyebrow">Data Scientist · Economist · M.S.CAPP UChicago</p>
+      <h1 class="hero-name">Paula<br><em>Cadena</em></h1>
+      <p class="hero-tagline">
+        I turn complex data into evidence that drives social change — specializing in machine learning and econometric analysis.
+      <div class="hero-ctas">
+        <a href="#projects" class="btn-primary">View Projects</a>
+        <a href="https://github.com/paula-cadena" target="_blank" class="btn-outline">GitHub ↗</a>
+        <a href="mailto:pacadenam@gmail.com" class="btn-outline">Get In Touch</a>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stats-panel">
+        <div class="stat-item">
+          <span class="stat-number">7</span>
+          <span class="stat-label">Years Experience</span>
         </div>
-        <p>&copy; 2025 Paula Cadena. All rights reserved.</p>
-    </footer>
+        <div class="stat-item">
+          <span class="stat-number">4M+</span>
+          <span class="stat-label">Records Processed</span>
+        </div>
+        <div class="skills-chip-list">
+          <span class="chip">Python</span>
+          <span class="chip">R</span>
+          <span class="chip">SQL</span>
+          <span class="chip">PyTorch</span>
+          <span class="chip">scikit-learn</span>
+          <span class="chip">AWS</span>
+          <span class="chip">NLP</span>
+          <span class="chip">Econometrics</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     ABOUT
+     ============================================================ -->
+<section id="about">
+  <div class="section-header reveal">
+    <span class="section-num">01 /</span>
+    <h2 class="section-title">About Me</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>
+        I'm a <strong>Data Scientist and Economist</strong> with a Master's from the University of Chicago's Harris School of Public Policy, where I specialized in computational analysis, machine learning, and applied statistics.
+      </p>
+      <p>
+        My work sits at the intersection of <strong>rigorous quantitative methods and real-world social impact</strong>. I've built ML pipelines for the Bogotá Chamber of Commerce, conducted econometric impact evaluations for early childhood interventions at UChicago's CEHD, automated data systems for Colombia's Special Jurisdiction for Peace, and now support education policy research at the IDB.
+      </p>
+      <p>
+        What drives me is the question behind every dataset: <strong>who is affected, and how can we measure it honestly?</strong> I'm fluent in both code and context, equally comfortable writing a PyTorch model or presenting findings to a policy audience.
+      </p>
+    </div>
+
+    <div class="about-sidebar reveal">
+      <div class="sidebar-block">
+        <h4>Education</h4>
+        <p>M.S. Computational Analysis & Public Policy<br>The University of Chicago, 2025</p>
+        <br>
+        <p>B.S. Economics · University of los Andes</p>
+        <p>B.A. Political Science · National University of Colombia</p>
+      </div>
+      <div class="sidebar-block">
+        <h4>Languages</h4>
+        <p>Spanish (Native) · English (Fluent)</p>
+      </div>
+      <div class="sidebar-block">
+        <h4>Currently</h4>
+        <p>Economic Consultant, Education Division<br>Inter-American Development Bank</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PROJECTS
+     ============================================================ -->
+<section id="projects">
+  <div class="section-header reveal">
+    <span class="section-num">02 /</span>
+    <h2 class="section-title">Projects</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <!-- Featured: NLP Peace Process -->
+  <!-- <div class="featured-project reveal">
+    <div class="featured-project-card">
+      <div>
+        <span class="project-badge">★ Featured · NLP Research</span>
+        <h3 class="project-title">Voices of Transition: NLP Analysis of Colombia's Peace Process</h3>
+        <p class="project-desc">
+          Applied topic modeling (LDA / BERTopic) and sentiment analysis to thousands of official testimonies, legal rulings, and policy documents from Colombia's Special Jurisdiction for Peace (JEP). Surfaces latent themes in transitional justice narratives across 50,000+ victim cases — revealing how language shapes accountability.
+        </p>
+        <div class="project-tags" style="margin-top:1rem; margin-bottom:1.2rem;">
+          <span class="tag">Python</span>
+          <span class="tag">BERTopic</span>
+          <span class="tag">spaCy</span>
+          <span class="tag">NLTK</span>
+          <span class="tag">HuggingFace</span>
+          <span class="tag">Plotly</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/paula-cadena" target="_blank">GitHub ↗</a>
+          <a href="#">Live Demo ↗</a>
+        </div>
+      </div> -->
+
+      <!-- Inline mini-viz -->
+      <!-- <div class="nlp-viz">
+        <p class="nlp-title">Top Document Topics Detected</p>
+        <div>
+          <p class="nlp-bar-label">Victim Testimony & Reparations</p>
+          <div class="nlp-bar-row">
+            <div class="nlp-bar-track"><div class="nlp-bar-fill" style="width:87%"></div></div>
+            <span class="nlp-bar-pct">87%</span>
+          </div>
+        </div>
+        <div>
+          <p class="nlp-bar-label">State Accountability</p>
+          <div class="nlp-bar-row">
+            <div class="nlp-bar-track"><div class="nlp-bar-fill" style="width:74%; animation-delay:0.2s"></div></div>
+            <span class="nlp-bar-pct">74%</span>
+          </div>
+        </div>
+        <div>
+          <p class="nlp-bar-label">Territorial & Land Rights</p>
+          <div class="nlp-bar-row">
+            <div class="nlp-bar-track"><div class="nlp-bar-fill" style="width:61%; animation-delay:0.4s"></div></div>
+            <span class="nlp-bar-pct">61%</span>
+          </div>
+        </div>
+        <div>
+          <p class="nlp-bar-label">Armed Actor Attribution</p>
+          <div class="nlp-bar-row">
+            <div class="nlp-bar-track"><div class="nlp-bar-fill" style="width:55%; animation-delay:0.6s"></div></div>
+            <span class="nlp-bar-pct">55%</span>
+          </div>
+        </div>
+        <div>
+          <p class="nlp-bar-label">Reconciliation & Truth</p>
+          <div class="nlp-bar-row">
+            <div class="nlp-bar-track"><div class="nlp-bar-fill" style="width:43%; animation-delay:0.8s"></div></div>
+            <span class="nlp-bar-pct">43%</span>
+          </div>
+        </div>
+        <div>
+          <p class="nlp-bar-label">Displacement & Migration</p>
+          <div class="nlp-bar-row">
+            <div class="nlp-bar-track"><div class="nlp-bar-fill" style="width:38%; animation-delay:1s"></div></div>
+            <span class="nlp-bar-pct">38%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- Project cards grid -->
+  <div class="projects-grid">
+
+    <!-- <div class="project-card reveal">
+      <span class="project-badge">New · ML</span>
+      <h3 class="project-title">Bogotá Business Ecosystem Classifier</h3>
+      <p class="project-desc">ML classification pipeline segmenting 2M+ companies in Bogotá's business registry. Combines ensemble models (XGBoost + Random Forest) with SHAP explainability to surface key variables driving economic formalization.</p>
+      <div class="project-tags">
+        <span class="tag">Python</span><span class="tag">XGBoost</span><span class="tag">SHAP</span><span class="tag">scikit-learn</span><span class="tag">Power BI</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/paula-cadena" target="_blank">GitHub ↗</a>
+      </div>
+    </div> -->
+
+    <div class="project-card reveal">
+      <span class="project-badge">Visualization</span>
+      <h3 class="project-title">Migration in Motion</h3>
+      <p class="project-desc">Interactive D3.js visualization of global migration flows (1990–2020). Chord diagrams, animated time-series maps, and regional breakdowns — exploring push/pull factors across 195 countries.</p>
+      <div class="project-tags">
+        <span class="tag">D3.js</span><span class="tag">JavaScript</span><span class="tag">Python</span><span class="tag">HTML/CSS</span>
+      </div>
+      <div class="project-links">
+        <a href="https://paula-cadena.github.io/migration/project_dataviz.html" target="_blank">Live ↗</a>
+        <a href="https://github.com/paula-cadena/CAPP30239-IP" target="_blank">GitHub ↗</a>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <span class="project-badge">ML · Policy</span>
+      <h3 class="project-title">Costa Rica Proxy Means Test</h3>
+      <p class="project-desc">Supervised ML model using household survey data to classify poverty status in Costa Rica, replicating and improving the national PMT methodology used to target social programs to 300K+ families.</p>
+      <div class="project-tags">
+        <span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">Econometrics</span><span class="tag">R</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/m-rosenbaum/cr_pmt/" target="_blank">GitHub ↗</a>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <span class="project-badge">Visualization</span>
+      <h3 class="project-title">Unveiling Global Socioeconomic Patterns</h3>
+      <p class="project-desc">Multi-panel interactive visualization examining correlations between GDP, education, health, and inequality across 180+ countries using layered Altair & D3 charts with linked brushing and filtering.</p>
+      <div class="project-tags">
+        <span class="tag">Altair</span><span class="tag">D3.js</span><span class="tag">Python</span><span class="tag">JavaScript</span>
+      </div>
+      <div class="project-links">
+        <a href="https://paula-cadena.github.io/socioeconomic/patterns.html" target="_blank">Live ↗</a>
+        <a href="https://github.com/paula-cadena/CAPP30239-SP" target="_blank">GitHub ↗</a>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <span class="project-badge">Healthcare · ML</span>
+      <h3 class="project-title">Ghost-Hunter: Medicaid Directory Audit</h3>
+      <p class="project-desc">Detected "ghost providers" in Medicaid directories using record linkage, geospatial validation, and classification models. Built as a team capstone at UChicago.</p>
+      <div class="project-tags">
+        <span class="tag">Python</span><span class="tag">Record Linkage</span><span class="tag">GIS</span><span class="tag">SQL</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/uchicago-mscapp-projects/Ghost-Hunter" target="_blank">GitHub ↗</a>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <span class="project-badge">Full-Stack</span>
+      <h3 class="project-title">miau: Real-Time Messaging Platform</h3>
+      <p class="project-desc">Full-stack Slack clone with real-time WebSocket messaging, channel management, and file sharing. Flask (Python) API backend, React frontend, PostgreSQL, deployed on AWS.</p>
+      <div class="project-tags">
+        <span class="tag">Flask</span><span class="tag">React</span><span class="tag">PostgreSQL</span><span class="tag">AWS</span><span class="tag">WebSockets</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/paula-cadena/slack-dupe" target="_blank">GitHub ↗</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     EXPERIENCE
+     ============================================================ -->
+<section id="experience">
+  <div class="section-header reveal">
+    <span class="section-num">03 /</span>
+    <h2 class="section-title">Experience</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="exp-list">
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <span class="exp-date">Nov 2025 – Present</span>
+        <span class="exp-org">Inter-American Development Bank</span>
+      </div>
+      <div>
+        <h3 class="exp-role">Economic Consultant — Education Division</h3>
+        <ul class="exp-bullets">
+          <li>Systematic literature reviews on EdTech to inform evidence-based policy for Latin America & the Caribbean</li>
+          <li>Screened and analyzed 300+ academic papers, extracting quantitative results for policy synthesis on skills & lifelong learning</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <span class="exp-date">May 2024 – Jun 2025</span>
+        <span class="exp-org">UChicago Center for the Economics of Human Development</span>
+      </div>
+      <div>
+        <h3 class="exp-role">Research Assistant</h3>
+        <ul class="exp-bullets">
+          <li>Econometric impact evaluations & cost-benefit analysis for two longitudinal early childhood studies in Stata & R</li>
+          <li>Mediation/moderation analyses to isolate intervention drivers for stakeholder policy recommendations</li>
+          <li>Standardized statistical workflows enabling replicable cross-study comparisons</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <span class="exp-date">Aug 2023 – Jun 2024</span>
+        <span class="exp-org">The Special Peace Jurisdiction</span>
+      </div>
+      <div>
+        <h3 class="exp-role">Data Integration Consultant</h3>
+        <ul class="exp-bullets">
+          <li>Automated data cleaning & migration in Python, reducing manual errors by 40% across legal/forensic workflows</li>
+          <li>Audited 1.48TB (58,597 files), removed 51% duplicates, built search interface cutting retrieval time 60% for 30+ teams</li>
+          <li>Trained 30+ users enabling 2× faster victim identification through centralized evidence access</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <span class="exp-date">Feb 2022 – Jul 2023</span>
+        <span class="exp-org">Bogota Chamber of Commerce</span>
+      </div>
+      <div>
+        <h3 class="exp-role">Senior Data Analyst</h3>
+        <ul class="exp-bullets">
+          <li>Migrated 4M+ observations across 8 sources from Excel/Stata to Python, cutting cleaning time by 50%</li>
+          <li>ML classification on 2M+ companies at 85% accuracy; real-time Power BI dashboards for 60+ stakeholders</li>
+          <li>Mentored 5 analysts; built Python alert systems for contract tracking</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SKILLS
+     ============================================================ -->
+<section id="skills">
+  <div class="section-header reveal">
+    <span class="section-num">04 /</span>
+    <h2 class="section-title">Skills</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="skills-outer">
+    <div class="skills-categories">
+
+      <div class="skill-cat reveal">
+        <h4>Machine Learning & AI</h4>
+        <div class="skill-items">
+          <span class="skill-pill">scikit-learn</span>
+          <span class="skill-pill">PyTorch</span>
+          <span class="skill-pill">TensorFlow</span>
+          <span class="skill-pill">Keras</span>
+          <span class="skill-pill">XGBoost</span>
+          <span class="skill-pill">BERTopic</span>
+          <span class="skill-pill">HuggingFace</span>
+        </div>
+      </div>
+
+      <div class="skill-cat reveal">
+        <h4>NLP & Text Analysis</h4>
+        <div class="skill-items">
+          <span class="skill-pill">spaCy</span>
+          <span class="skill-pill">NLTK</span>
+          <span class="skill-pill">Topic Modeling</span>
+          <span class="skill-pill">LDA</span>
+          <span class="skill-pill">NER</span>
+        </div>
+      </div>
+
+      <div class="skill-cat reveal">
+        <h4>Data & Econometrics</h4>
+        <div class="skill-items">
+          <span class="skill-pill">Pandas</span>
+          <span class="skill-pill">NumPy</span>
+          <span class="skill-pill">Stata</span>
+          <span class="skill-pill">R (lme4, caret)</span>
+          <span class="skill-pill">Impact Evaluation</span>
+          <span class="skill-pill">Causal Inference</span>
+        </div>
+      </div>
+
+      <div class="skill-cat reveal">
+        <h4>Visualization</h4>
+        <div class="skill-items">
+          <span class="skill-pill">D3.js</span>
+          <span class="skill-pill">Plotly</span>
+          <span class="skill-pill">Altair</span>
+          <span class="skill-pill">ggplot2</span>
+          <span class="skill-pill">Power BI</span>
+          <span class="skill-pill">Tableau</span>
+        </div>
+      </div>
+
+      <div class="skill-cat reveal">
+        <h4>Engineering & Cloud</h4>
+        <div class="skill-items">
+          <span class="skill-pill">AWS</span>
+          <span class="skill-pill">SQL</span>
+          <span class="skill-pill">FastAPI</span>
+          <span class="skill-pill">Flask</span>
+          <span class="skill-pill">Django</span>
+          <span class="skill-pill">Git</span>
+          <span class="skill-pill">Docker</span>
+        </div>
+      </div>
+
+      <div class="skill-cat reveal">
+        <h4>Frontend & Full-Stack</h4>
+        <div class="skill-items">
+          <span class="skill-pill">React</span>
+          <span class="skill-pill">JavaScript</span>
+          <span class="skill-pill">HTML/CSS</span>
+          <span class="skill-pill">GIS</span>
+          <span class="skill-pill">Power Automate</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CONTACT
+     ============================================================ -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-header reveal">
+      <span class="section-num">05 /</span>
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="section-line"></div>
+    </div>
+    <p class="contact-tagline reveal">
+      I'm open to data science and research roles where rigorous analysis meets real-world impact — especially in education, public policy, and social development. Let's talk.
+    </p>
+    <div class="contact-links reveal">
+      <a href="mailto:pacadenam@gmail.com" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        pacadenam@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/paulacadena" target="_blank" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zm2-6a2 2 0 110 4 2 2 0 010-4z"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/paula-cadena" target="_blank" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.742 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+        GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <p>© 2026 Paula Cadena. All rights reserved.</p>
+  <p>Data Scientist · Economist · UChicago M.S.CAPP</p>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/tracker.js"></script>
 </body>
 </html>
