@@ -6,185 +6,143 @@
 // (just before the closing </body> tag, after main.js)
 // ============================================================
 
-const CONFIG = {
-  ENDPOINT: "https://script.google.com/macros/s/AKfycbw6uBOIEtTLJWQDkOVKvx0O7TDPWtzBhLOIk-dS5gj_99wLISQvm0aHyDn9JSEmOMJgoQ/exec",
-};
+const ENDPOINT = "https://script.google.com/macros/s/AKfycbw6uBOIEtTLJWQDkOVKvx0O7TDPWtzBhLOIk-dS5gj_99wLISQvm0aHyDn9JSEmOMJgoQ/exec"
+
 
 // ------------------------------------------------------------
-// Session state
+// Session state 
 // ------------------------------------------------------------
 const SESSION = {
-  id:         generateSessionId(),
-  start:      Date.now(),
-  page:       document.title,
-  referrer:   document.referrer || "direct",
-  ...parseUTM(),
-  ...parseDevice(),
+  id:           generateSessionId(),
+  start:        Date.now(),
+  page:         document.title,
+  referrer:     document.referrer || "direct",
+  device:       getDevice(),
+  os:           getOS(),
+  browser:      getBrowser(),
+  screen:       window.screen.width + "x" + window.screen.height,
+  utm_source:   getParam("utm_source"),
+  utm_medium:   getParam("utm_medium"),
+  utm_campaign: getParam("utm_campaign"),
 };
 
-let sectionTimes = {};   // section → timestamp when it entered viewport
+let sectionTimes = {};
 let activeSection = null;
 
 // ------------------------------------------------------------
-// Send one event to the Apps Script endpoint
+// Core: build payload and POST to Apps Script
 // ------------------------------------------------------------
-function send(event, extra = {}) {
-  const payload = {
-    timestamp:    new Date().toISOString(),
-    event,
-    session_id:   SESSION.id,
-    page:         SESSION.page,
-    referrer:     SESSION.referrer,
-    device:       SESSION.device,
-    os:           SESSION.os,
-    browser:      SESSION.browser,
-    screen:       SESSION.screen,
-    utm_source:   SESSION.utm_source,
-    utm_medium:   SESSION.utm_medium,
-    utm_campaign: SESSION.utm_campaign,
-    country:      null,   // filled async by geo lookup
-    city:         null,
-    ...extra,
-  };
+function send(event, extra) {
+  if (ENDPOINT.startsWith("PASTE")) return;
 
-  // Geo enrichment — best-effort, non-blocking
-  enrichGeo().then(geo => {
-    payload.country = geo.country;
-    payload.city    = geo.city;
-    postEvent(payload);
-  }).catch(() => postEvent(payload));
-}
+  const payload = Object.assign({
+    timestamp:       new Date().toISOString(),
+    event:           event,
+    session_id:      SESSION.id,
+    page:            SESSION.page,
+    referrer:        SESSION.referrer,
+    device:          SESSION.device,
+    os:              SESSION.os,
+    browser:         SESSION.browser,
+    screen:          SESSION.screen,
+    utm_source:      SESSION.utm_source,
+    utm_medium:      SESSION.utm_medium,
+    utm_campaign:    SESSION.utm_campaign,
+    duration_sec:    null,
+    project_clicked: null,
+    section_visible: null,
+  }, extra || {});
 
-function postEvent(payload) {
-  // Use sendBeacon when available (survives page unload)
+  const body = JSON.stringify(payload);
+
   if (navigator.sendBeacon) {
-    const blob = new Blob([JSON.stringify(payload)], { type: "application/json" });
-    navigator.sendBeacon(ENDPOINT, blob);
+    navigator.sendBeacon(ENDPOINT, new Blob([body], { type: "application/json" }));
   } else {
-    fetch(ENDPOINT, {
-      method:  "POST",
-      headers: { "Content-Type": "application/json" },
-      body:    JSON.stringify(payload),
-      keepalive: true,
-    }).catch(() => {});
+    fetch(ENDPOINT, { method: "POST", body: body, keepalive: true }).catch(function() {});
   }
 }
 
 // ------------------------------------------------------------
-// GEO — free ipapi.co lookup (1,000 req/day free tier)
-// ------------------------------------------------------------
-let geoCache = null;
-function enrichGeo() {
-  if (geoCache) return Promise.resolve(geoCache);
-  return fetch("https://ipapi.co/json/")
-    .then(r => r.json())
-    .then(d => {
-      geoCache = { country: d.country_name || d.country, city: d.city };
-      return geoCache;
-    });
-}
-
-// ------------------------------------------------------------
-// EVENTS
+// Events
 // ------------------------------------------------------------
 
-// 1. Page view (on load)
-window.addEventListener("load", () => {
+window.addEventListener("load", function() {
   send("page_view");
 });
 
-// 2. Page exit — record total time on page
-window.addEventListener("beforeunload", () => {
-  const duration = Math.round((Date.now() - SESSION.start) / 1000);
-  send("page_exit", { duration_sec: duration });
+window.addEventListener("beforeunload", function() {
+  send("page_exit", {
+    duration_sec: Math.round((Date.now() - SESSION.start) / 1000)
+  });
 });
 
-// 3. Section visibility — fires when each section enters viewport
-const sectionObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    const id = entry.target.id;
+var sectionObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    var id = entry.target.id;
     if (entry.isIntersecting) {
       sectionTimes[id] = Date.now();
-      activeSection    = id;
+      activeSection = id;
       send("section_view", { section_visible: id });
     } else if (sectionTimes[id]) {
-      const dwell = Math.round((Date.now() - sectionTimes[id]) / 1000);
-      send("section_exit", { section_visible: id, duration_sec: dwell });
+      send("section_exit", {
+        section_visible: id,
+        duration_sec: Math.round((Date.now() - sectionTimes[id]) / 1000)
+      });
       delete sectionTimes[id];
     }
   });
 }, { threshold: 0.4 });
 
-document.querySelectorAll("section[id]").forEach(s => sectionObserver.observe(s));
+document.querySelectorAll("section[id]").forEach(function(s) {
+  sectionObserver.observe(s);
+});
 
-// 4. Project link clicks
-document.querySelectorAll(".project-links a, .project-card, .featured-project-card").forEach(el => {
-  el.addEventListener("click", (e) => {
-    // Find the closest project title
-    const card  = el.closest(".project-card, .featured-project-card");
-    const title = card?.querySelector(".project-title")?.textContent?.trim() || "unknown";
-    const href  = el.href || el.closest("a")?.href || "";
-    send("project_click", {
-      project_clicked: title,
-      section_visible: "projects",
-      page: href,
-    });
+document.querySelectorAll(".project-links a").forEach(function(el) {
+  el.addEventListener("click", function() {
+    var card  = el.closest(".project-card, .featured-project-card");
+    var title = card && card.querySelector(".project-title")
+                ? card.querySelector(".project-title").textContent.trim()
+                : "unknown";
+    send("project_click", { project_clicked: title, section_visible: "projects" });
   });
 });
 
-// 5. CTA clicks (hero buttons, contact links)
-document.querySelectorAll(".hero-ctas a, .contact-link, .btn-primary, .btn-outline").forEach(el => {
-  el.addEventListener("click", () => {
-    send("cta_click", {
-      page: el.href || el.textContent.trim(),
-      section_visible: activeSection,
-    });
+document.querySelectorAll(".hero-ctas a, .contact-link").forEach(function(el) {
+  el.addEventListener("click", function() {
+    send("cta_click", { page: el.textContent.trim(), section_visible: activeSection });
   });
 });
 
 // ------------------------------------------------------------
-// HELPERS
+// Helpers
 // ------------------------------------------------------------
-
 function generateSessionId() {
   return "s_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 7);
 }
-
-function parseUTM() {
-  const p = new URLSearchParams(window.location.search);
-  return {
-    utm_source:   p.get("utm_source")   || null,
-    utm_medium:   p.get("utm_medium")   || null,
-    utm_campaign: p.get("utm_campaign") || null,
-  };
+function getParam(name) {
+  return new URLSearchParams(window.location.search).get(name) || null;
 }
-
-function parseDevice() {
-  const ua  = navigator.userAgent;
-  const w   = window.innerWidth;
-
-  const device =
-    /Mobi|Android/i.test(ua) ? "mobile" :
-    /Tablet|iPad/i.test(ua)  ? "tablet" : "desktop";
-
-  const os =
-    /Windows/.test(ua) ? "Windows" :
-    /Mac OS/.test(ua)  ? "macOS"   :
-    /Linux/.test(ua)   ? "Linux"   :
-    /Android/.test(ua) ? "Android" :
-    /iOS|iPhone|iPad/.test(ua) ? "iOS" : "Other";
-
-  const browser =
-    /Edg\//.test(ua)    ? "Edge"    :
-    /OPR\//.test(ua)    ? "Opera"   :
-    /Chrome\//.test(ua) ? "Chrome"  :
-    /Firefox\//.test(ua)? "Firefox" :
-    /Safari\//.test(ua) ? "Safari"  : "Other";
-
-  return {
-    device,
-    os,
-    browser,
-    screen: `${window.screen.width}×${window.screen.height}`,
-  };
+function getDevice() {
+  var ua = navigator.userAgent;
+  if (/Mobi|Android/i.test(ua)) return "mobile";
+  if (/Tablet|iPad/i.test(ua))  return "tablet";
+  return "desktop";
+}
+function getOS() {
+  var ua = navigator.userAgent;
+  if (/Windows/.test(ua))         return "Windows";
+  if (/Mac OS/.test(ua))          return "macOS";
+  if (/Android/.test(ua))         return "Android";
+  if (/iOS|iPhone|iPad/.test(ua)) return "iOS";
+  if (/Linux/.test(ua))           return "Linux";
+  return "Other";
+}
+function getBrowser() {
+  var ua = navigator.userAgent;
+  if (/Edg\//.test(ua))     return "Edge";
+  if (/OPR\//.test(ua))     return "Opera";
+  if (/Chrome\//.test(ua))  return "Chrome";
+  if (/Firefox\//.test(ua)) return "Firefox";
+  if (/Safari\//.test(ua))  return "Safari";
+  return "Other";
 }
