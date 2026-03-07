@@ -7,7 +7,7 @@
 // ============================================================
 
 const CONFIG = {
-  TRACKING_ENDPOINT: "https://script.google.com/macros/s/AKfycbw6uBOIEtTLJWQDkOVKvx0O7TDPWtzBhLOIk-dS5gj_99wLISQvm0aHyDn9JSEmOMJgoQ/exec",
+  ENDPOINT: "https://script.google.com/macros/s/AKfycbw6uBOIEtTLJWQDkOVKvx0O7TDPWtzBhLOIk-dS5gj_99wLISQvm0aHyDn9JSEmOMJgoQ/exec",
 };
 
 // ------------------------------------------------------------
