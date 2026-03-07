@@ -1,9 +1,5 @@
 // ============================================================
-// PORTFOLIO VISITOR TRACKER  —  js/tracker.js
-//
-// Paste your Google Apps Script deployment URL below.
-// Then add <script src="js/tracker.js"></script> to index.html
-// (just before the closing </body> tag, after main.js)
+// PORTFOLIO VISITOR TRACKER
 // ============================================================
 
 const ENDPOINT = "https://script.google.com/macros/s/AKfycbw6uBOIEtTLJWQDkOVKvx0O7TDPWtzBhLOIk-dS5gj_99wLISQvm0aHyDn9JSEmOMJgoQ/exec";
