@@ -49,31 +49,52 @@ function send(event, extra) {
     section_visible: null,
   }, extra || {});
 
-  const body = JSON.stringify(payload);
-
-  // sendBeacon skips CORS preflight — required for Google Apps Script
-  // Falls back to no-cors fetch which also avoids preflight
+  getGeo().then(function(geo) {
+    const payload = Object.assign(base, { country: geo.country, city: geo.city });
+    postEvent(JSON.stringify(payload));
+  });
+}
+ 
+function postEvent(body) {
   if (navigator.sendBeacon) {
     navigator.sendBeacon(ENDPOINT, new Blob([body], { type: "text/plain" }));
   } else {
     fetch(ENDPOINT, { method: "POST", mode: "no-cors", body: body }).catch(function() {});
   }
 }
-
+ 
 // ------------------------------------------------------------
-// Events
+// Geo — Cloudflare trace endpoint, CORS-friendly, no API key
 // ------------------------------------------------------------
-
+let geoCache = null;
+function getGeo() {
+  if (geoCache) return Promise.resolve(geoCache);
+  return fetch("https://cloudflare.com/cdn-cgi/trace")
+    .then(function(r) { return r.text(); })
+    .then(function(text) {
+      const lines = {};
+      text.split("\n").forEach(function(line) {
+        const parts = line.split("=");
+        if (parts.length === 2) lines[parts[0]] = parts[1].trim();
+      });
+      geoCache = { country: lines["loc"] || null, city: null };
+      return geoCache;
+    })
+    .catch(function() { return { country: null, city: null }; });
+}
+ 
+ 
+ 
 window.addEventListener("load", function() {
   send("page_view");
 });
-
+ 
 window.addEventListener("beforeunload", function() {
   send("page_exit", {
     duration_sec: Math.round((Date.now() - SESSION.start) / 1000)
   });
 });
-
+ 
 var sectionObserver = new IntersectionObserver(function(entries) {
   entries.forEach(function(entry) {
     var id = entry.target.id;
@@ -90,11 +111,11 @@ var sectionObserver = new IntersectionObserver(function(entries) {
     }
   });
 }, { threshold: 0.4 });
-
+ 
 document.querySelectorAll("section[id]").forEach(function(s) {
   sectionObserver.observe(s);
 });
-
+ 
 document.querySelectorAll(".project-links a").forEach(function(el) {
   el.addEventListener("click", function() {
     var card  = el.closest(".project-card, .featured-project-card");
@@ -104,7 +125,7 @@ document.querySelectorAll(".project-links a").forEach(function(el) {
     send("project_click", { project_clicked: title, section_visible: "projects" });
   });
 });
-
+ 
 document.querySelectorAll(".hero-ctas a, .contact-link").forEach(function(el) {
   el.addEventListener("click", function() {
     send("cta_click", { page: el.textContent.trim(), section_visible: activeSection });
