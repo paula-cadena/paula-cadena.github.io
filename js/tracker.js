@@ -26,44 +26,6 @@ let sectionTimes = {};
 let activeSection = null;
 
 // ------------------------------------------------------------
-// Core: build payload and POST to Apps Script
-// ------------------------------------------------------------
-function send(event, extra) {
-  if (ENDPOINT.startsWith("PASTE")) return;
-
-  const payload = Object.assign({
-    timestamp:       new Date().toISOString(),
-    event:           event,
-    session_id:      SESSION.id,
-    page:            SESSION.page,
-    referrer:        SESSION.referrer,
-    device:          SESSION.device,
-    os:              SESSION.os,
-    browser:         SESSION.browser,
-    screen:          SESSION.screen,
-    utm_source:      SESSION.utm_source,
-    utm_medium:      SESSION.utm_medium,
-    utm_campaign:    SESSION.utm_campaign,
-    duration_sec:    null,
-    project_clicked: null,
-    section_visible: null,
-  }, extra || {});
-
-  getGeo().then(function(geo) {
-    const payload = Object.assign(base, { country: geo.country, city: geo.city });
-    postEvent(JSON.stringify(payload));
-  });
-}
- 
-function postEvent(body) {
-  if (navigator.sendBeacon) {
-    navigator.sendBeacon(ENDPOINT, new Blob([body], { type: "text/plain" }));
-  } else {
-    fetch(ENDPOINT, { method: "POST", mode: "no-cors", body: body }).catch(function() {});
-  }
-}
- 
-// ------------------------------------------------------------
 // Geo — Cloudflare trace endpoint, CORS-friendly, no API key
 // ------------------------------------------------------------
 let geoCache = null;
@@ -81,6 +43,45 @@ function getGeo() {
       return geoCache;
     })
     .catch(function() { return { country: null, city: null }; });
+}
+
+// ------------------------------------------------------------
+// Core: build payload and POST to Apps Script
+// ------------------------------------------------------------
+function send(event, extra) {
+  if (ENDPOINT.startsWith("PASTE")) return;
+ 
+  var base = Object.assign({
+    timestamp:       new Date().toISOString(),
+    event:           event,
+    session_id:      SESSION.id,
+    page:            SESSION.page,
+    referrer:        SESSION.referrer,
+    device:          SESSION.device,
+    os:              SESSION.os,
+    browser:         SESSION.browser,
+    screen:          SESSION.screen,
+    utm_source:      SESSION.utm_source,
+    utm_medium:      SESSION.utm_medium,
+    utm_campaign:    SESSION.utm_campaign,
+    duration_sec:    null,
+    project_clicked: null,
+    section_visible: null,
+  }, extra || {});
+ 
+  getGeo().then(function(geo) {
+    base.country = geo.country;
+    base.city    = geo.city;
+    postEvent(JSON.stringify(base));
+  });
+}
+ 
+function postEvent(body) {
+  if (navigator.sendBeacon) {
+    navigator.sendBeacon(ENDPOINT, new Blob([body], { type: "text/plain" }));
+  } else {
+    fetch(ENDPOINT, { method: "POST", mode: "no-cors", body: body }).catch(function() {});
+  }
 }
  
  
